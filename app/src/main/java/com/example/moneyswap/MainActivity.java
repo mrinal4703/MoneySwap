@@ -35,7 +35,23 @@ public class MainActivity extends AppCompatActivity {
     Dialog fromDialog, toDialog;
     Button convertButton;
     String convertFromValue, convertToValue, conversionValue;
-    String[] currency = {""};
+    String[] currency = {
+            "AFN", "EUR", "ALL", "DZD", "USD", "AOA", "XCD", "ARS", "AMD", "AWG", "AUD",
+            "AZN", "BSD", "BHD", "BDT", "BBD", "BYN", "BZD", "BMD", "BTN", "BOB", "BAM",
+            "BWP", "BRL", "GBP", "BND", "BGN", "BIF", "KHR", "CAD", "CVE", "KYD", "CLP",
+            "CNY", "COP", "KMF", "CDF", "CRC", "HRK", "CUC", "ANG", "CZK", "DKK", "DJF",
+            "DOP", "EGP", "ERN", "ETB", "FJD", "GMD", "GEL", "GHS", "GIP", "GTQ", "GNF",
+            "GYD", "HTG", "HNL", "HKD", "HUF", "ISK", "INR", "IDR", "IRR", "IQD", "ILS",
+            "JMD", "JPY", "JOD", "KZT", "KES", "KPW", "KRW", "KWD", "KGS", "LAK", "LBP",
+            "LSL", "LRD", "LYD", "MOP", "MKD", "MGA", "MWK", "MYR", "MVR", "MRU", "MUR",
+            "XUA", "MXN", "MXV", "MDL", "MNT", "MAD", "MZN", "MMK", "NAD", "NPR", "NIO",
+            "NGN", "OMR", "PKR", "PAB", "PGK", "PYG", "PEN", "PHP", "PLN", "QAR", "RON",
+            "RUB", "RWF", "SHP", "WST", "STN", "SAR", "RSD", "SCR", "SLL", "SGD", "XSU",
+            "SBD", "SOS", "SSP", "LKR", "SDG", "SRD", "SZL", "SEK", "CHE", "CHF", "CHW",
+            "SYP", "TWD", "TJS", "TZS", "THB", "TOP", "TTD", "TND", "TRY", "TMT", "UGX",
+            "UAH", "AED", "USN", "UYU", "UYI", "UYW", "UZS", "VUV", "VEF", "VND", "YER",
+            "ZWL"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 fromDialog = new Dialog(MainActivity.this);
                 fromDialog.setContentView(R.layout.from_spinner);
-                fromDialog.getWindow().setLayout(650,800);
+                fromDialog.getWindow().setLayout(650,1200);
                 fromDialog.show();
 
                 EditText editText = fromDialog.findViewById(R.id.edit_text);
@@ -99,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 toDialog = new Dialog(MainActivity.this);
                 toDialog.setContentView(R.layout.to_spinner);
-                toDialog.getWindow().setLayout(650,800);
+                toDialog.getWindow().setLayout(650,1200);
                 toDialog.show();
 
                 EditText editText = toDialog.findViewById(R.id.edit_text);
@@ -153,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
     public String getConversionRate(String convertFrom, String convertTo, Double amountToConvert){
         RequestQueue queue = Volley.newRequestQueue(this);
 //        String url = "https://free.currconv.com/api/v7/convert?q="+convertFrom+"_"+convertTo+"&compact=ultra&apiKey"
-        String url = "";
+        String url = "https://free.currconv.com/api/v7/convert?q="+convertFrom+"_"+convertTo+"&compact=ultra&apiKey=fcd86a25619ead2ce228";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
